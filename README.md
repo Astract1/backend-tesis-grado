@@ -23,25 +23,89 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Backend para Tesis de Grado con NestJS, PostgreSQL, TypeORM y Docker.
 
-## Project setup
+## Configuración Inicial
+
+### 1. Clonar el repositorio
 
 ```bash
-$ npm install
+git clone <repository-url>
+cd backend-tesis-grado
 ```
 
-## Compile and run the project
+### 2. Configurar variables de entorno
+
+Copia el archivo `.env.example` a `.env`:
+
+```bash
+cp .env.example .env
+```
+
+El archivo `.env` contiene las variables de entorno necesarias. Puedes modificarlas según tus necesidades.
+
+### 3. Iniciar con Docker (Recomendado)
+
+**PowerShell (Windows):**
+```powershell
+.\start.ps1
+```
+
+**Comando directo:**
+```bash
+docker-compose up --build -d
+```
+
+Esto iniciará:
+- **PostgreSQL** en puerto 5432
+- **pgAdmin** en puerto 5050 (http://localhost:5050)
+- **NestJS API** en puerto 3000 (http://localhost:3000)
+- **Swagger** en http://localhost:3000/api/docs
+
+**Hot Reload:** Los cambios en el código se aplican automáticamente.
+
+### 4. Instalación local (sin Docker)
+
+```bash
+npm install
+npm run start:dev
+```
+
+## Servicios
+
+- **API**: http://localhost:3000
+- **Swagger Docs**: http://localhost:3000/api/docs
+- **pgAdmin**: http://localhost:5050
+  - Email: `admin@admin.com`
+  - Password: `admin`
+
+## Comandos Docker
+
+```bash
+# Iniciar servicios
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Detener servicios
+docker-compose down
+
+# Rebuild
+docker-compose up --build -d
+```
+
+## Comandos NPM
 
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
 
 ## Run tests
